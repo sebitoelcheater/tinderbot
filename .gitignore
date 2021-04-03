@@ -1,0 +1,5 @@
+.idea/
+data/
+matches.json
+log.txt
+*.DS_Store
