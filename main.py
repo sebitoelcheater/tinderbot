@@ -141,6 +141,13 @@ def last_message_before(matches, hours_ago):
     )
 
 
+def not_in_blacklist(matches):
+    return filter(
+        lambda match: len(set.intersection(set(match['participants']), set(blacklist))) == 0,
+        matches
+    )
+
+
 def custom_message(match):
     last_message = match['messages'][-1]['message']
     response = input(f'--------\nNombre: {match["person"]["name"]}\nMensaje: {last_message}\nrespuesta?: ')
@@ -211,7 +218,7 @@ if False:
 if False:
     shout(
         lambda match: 'holi',  # 'Ya puedo dejar de deslizar 🙊',
-        matches
+        not_in_blacklist(matches)
     )
 
 if False:
